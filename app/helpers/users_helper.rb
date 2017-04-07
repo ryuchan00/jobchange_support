@@ -4,4 +4,9 @@ module UsersHelper
     size = options[:size]
     "https://secure.gravatar.com/avatar/#{gravatar_id}?s=#{size}&d=mm"
   end
+
+  def twitter_url(user)
+    twitter_img = user.image_url
+    "#{twitter_img}"
+  end
 end

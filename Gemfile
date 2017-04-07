@@ -56,14 +56,9 @@ gem 'rakuten_web_service'
 
 gem 'dotenv-rails'
 
+# twitter login
 gem 'devise'
 gem 'omniauth'
-gem 'omniauth-facebook'
-gem 'omniauth-github'
-gem 'omniauth-google-oauth2'
-gem 'omniauth-hatena'
-gem 'omniauth-linkedin'
-gem 'omniauth-mixi'
 gem 'omniauth-twitter'
 
 group :production do

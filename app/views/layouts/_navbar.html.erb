@@ -14,46 +14,74 @@
       <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
         <ul class="nav navbar-nav navbar-right">
           <% if logged_in? %>
-            <li>
-              <%= link_to new_item_path do %>
-                <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
-                アイテムを追加
-              <% end %>
-            </li>
-            
-            <li class="dropdown">
-              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
-                <span class="glyphicon glyphicon-signal" aria-hidden="true"></span>
-                ランキング
-                <span class="caret"></span>
-              </a>
-              <ul class="dropdown-menu">
-                <li><%= link_to 'Wantランキング', rankings_want_path %></li>
-                <li><%= link_to 'Haveランキング', rankings_have_path %></li>
-              </ul>
-            </li>
+              <li>
+                <%= link_to github_path do %>
+                    <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
+                    github
+                <% end %>
+              </li>
+              <li>
+                <%= link_to 'http://dotinstall.com/lessons/basic_php_v2' do %>
+                    <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
+                    ドットインストール
+                <% end %>
+              </li>
+              <li>
+                <%= link_to 'https://prog-8.com/languages/php' do %>
+                    <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
+                    progate
+                <% end %>
+              </li>
+              <li>
+                <%= link_to 'https://paiza.jp' do %>
+                    <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
+                    paiza
+                <% end %>
+              </li>
+              <li>
+                <%= link_to 'https://secure.php.net/manual/ja/index.php' do %>
+                    <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
+                    PHPマニュアル
+                <% end %>
+              </li>
+              <!--<li class="dropdown">-->
+                <!--<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">-->
+                  <!--<span class="glyphicon glyphicon-signal" aria-hidden="true"></span>-->
+                  <!--ランキング-->
+                  <!--<span class="caret"></span>-->
+                <!--</a>-->
+                <!--<ul class="dropdown-menu">-->
+                  <!--<li><%= link_to 'Wantランキング', rankings_want_path %></li>-->
+                  <!--<li><%= link_to 'Haveランキング', rankings_have_path %></li>-->
+                <!--</ul>-->
+              <!--</li>-->
 
-            <li class="dropdown">
-              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+              <li class="dropdown">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
                 <span class="gravatar">
-                  <img src="<%= gravatar_url(current_user, size: 20) %>" alt="" class="img-circle">
+                  <img src="<%= twitter_url(current_user) %>" alt="" class="img-circle" width="20" hight="20">
                 </span>
-                <%= current_user.name %>
-                <span class="caret"></span>
-              </a>
-              <ul class="dropdown-menu">
-                <li>
-                  <%= link_to 'マイページ', user_path(current_user) %>
-                </li>
-                <li role="separator" class="divider"></li>
-                <li>
+                  <%= current_user.name %>
+                  <span class="caret"></span>
+                </a>
+                <ul class="dropdown-menu">
+                  <li>
+                    <%= link_to 'マイページ', user_path(current_user) %>
+                  </li>
+                  <li role="separator" class="divider"></li>
+                  <li>
                   <li><%= link_to 'ログアウト', logout_path, method: :delete %></li>
-                </li>
-              </ul>
-            </li>
+                  </li>
+                </ul>
+              </li>
           <% else %>
-            <li><%= link_to '新規登録', signup_path %></li>
-            <li><%= link_to 'ログイン', login_path %></li>
+              <li><%= link_to '新規登録', signup_path %></li>
+              <li><%= link_to 'ログイン', login_path %></li>
+          <% end %>
+          <% if logged_in_tw? %>
+              <li><%= link_to 'ログアウト', logout_tw_path %></li>
+          <% else %>
+              <li><%= link_to 'Twitterでログイン', 'auth/twitter' %></li>
           <% end %>
         </ul>
       </div>

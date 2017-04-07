@@ -1,4 +1,18 @@
 class SessionsController < ApplicationController
+  def create_tw
+    @user = User.find_or_create_from_auth(request.env['omniauth.auth'])
+    session[:user_id] = @user.id
+    flash[:success] = 'ログインに成功しました。'
+    redirect_to root_path
+    # redirect_to @user
+  end
+
+  def destroy_tw
+    reset_session
+    flash[:success] = 'ログアウトしました。'
+    redirect_to root_path
+  end
+
   def new
   end
 

@@ -10,7 +10,15 @@ Rails.application.routes.draw do
 
   resources :items, only: [:show, :new]
   resources :ownerships, only: [:create, :destroy]
-  
+
   get 'rankings/want', to: 'rankings#want'
   get 'rankings/have', to: 'rankings#have'
+
+  get 'auth/:provider/callback', to: 'sessions#create_tw'
+  get '/logout_tw', to: 'sessions#destroy_tw'
+
+  get 'github', to: 'links#github'
+  get 'github/new', to: 'links#github_new'
+  get 'links/create', to: 'links#create'
+  post 'links/create', to: 'links#create'
 end

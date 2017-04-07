@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170327042900) do
+ActiveRecord::Schema.define(version: 20170405125601) do
 
   create_table "items", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string   "code"
@@ -19,6 +19,15 @@ ActiveRecord::Schema.define(version: 20170327042900) do
     t.string   "image_url"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "links", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.string   "provider"
+    t.string   "link"
+    t.integer  "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_links_on_user_id", using: :btree
   end
 
   create_table "ownerships", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
@@ -32,14 +41,38 @@ ActiveRecord::Schema.define(version: 20170327042900) do
     t.index ["user_id"], name: "index_ownerships_on_user_id", using: :btree
   end
 
+  create_table "social_profiles", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.integer  "user_id"
+    t.string   "provider"
+    t.string   "uid"
+    t.string   "name"
+    t.string   "nickname"
+    t.string   "email"
+    t.string   "url"
+    t.string   "image_url"
+    t.string   "description"
+    t.text     "other",       limit: 65535
+    t.text     "credentials", limit: 65535
+    t.text     "raw_info",    limit: 65535
+    t.datetime "created_at",                null: false
+    t.datetime "updated_at",                null: false
+    t.index ["provider", "uid"], name: "index_social_profiles_on_provider_and_uid", unique: true, using: :btree
+    t.index ["user_id"], name: "index_social_profiles_on_user_id", using: :btree
+  end
+
   create_table "users", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string   "name"
     t.string   "email"
     t.string   "password_digest"
     t.datetime "created_at",      null: false
     t.datetime "updated_at",      null: false
+    t.string   "provider"
+    t.string   "uid"
+    t.string   "image_url"
   end
 
+  add_foreign_key "links", "users"
   add_foreign_key "ownerships", "items"
   add_foreign_key "ownerships", "users"
+  add_foreign_key "social_profiles", "users"
 end

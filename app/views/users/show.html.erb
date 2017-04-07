@@ -1,6 +1,7 @@
 <div class="user-profile">
   <div class="icon text-center">
-    <img src="<%= gravatar_url(@user, size: 100) %>" alt="" class="img-circle">
+    <img src="<%#= gravatar_url(@user, size: 100) %>" alt="" class="img-circle">
+    <img src="<%= twitter_url(@user) %>" alt="" class="img-circle" width="100" hight="100">
   </div>
   <div class="name text-center">
     <h1><%= @user.name %></h1>
