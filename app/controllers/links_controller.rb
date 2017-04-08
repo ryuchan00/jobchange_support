@@ -1,5 +1,5 @@
 class LinksController < ApplicationController
-  before_action :current_user_tw, only: [:github_new, :github]
+  before_action :current_user_tw, only: [:github_new, :github, :cloud9_new, :cloud9]
 
   def create
     # @link = Link.new(link_params)
@@ -26,6 +26,18 @@ class LinksController < ApplicationController
     @current_user.link(@current_user, 'github')
     if @current_user
       redirect_to :action => "github_new"
+    end
+  end
+
+  def cloud9_new
+    @link = Link.new
+    @link.provider = 'cloud9'
+  end
+
+  def cloud9
+    @current_user.link(@current_user, 'cloud9')
+    if @current_user
+      redirect_to :action => "cloud9_new"
     end
   end
 

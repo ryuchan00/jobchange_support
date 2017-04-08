@@ -41,9 +41,11 @@ class User < ApplicationRecord
     link.destroy if link
   end
 
-  def link?(link)
-    self.links.include?(link)
-  end
+  # def link?(provider=null)
+  #   @user = current_user_tw
+  #   @link = @user.links_find_by(user_id: @user.id, provider: provider)
+  #   self.links.include?(@link)
+  # end
 
   def want(item)
     self.wants.find_or_create_by(item_id: item.id)

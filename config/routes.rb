@@ -19,6 +19,9 @@ Rails.application.routes.draw do
 
   get 'github', to: 'links#github'
   get 'github/new', to: 'links#github_new'
+  get 'cloud9', to: 'links#cloud9'
+  get 'cloud9/new', to: 'links#cloud9_new'
+
   get 'links/create', to: 'links#create'
   post 'links/create', to: 'links#create'
 end
