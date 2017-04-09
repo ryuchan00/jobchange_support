@@ -22,8 +22,8 @@ footer {
   margin-top: -20px;
   margin-bottom: 20px;
   width: 100%;
-  height: 300px;
-  background: url("/images/cover-bg.jpg") center center no-repeat;
+  height: 500px;
+  background: url("/images/cover-bg2.jpg") center center no-repeat;
   background-size: cover;
 }
 .cover .cover-inner {
@@ -39,7 +39,7 @@ footer {
 }
 .cover .cover-inner .cover-contents h1 {
   margin: 0 0 20px 0;
-  color: #fff;
+  color: #000;
   font-weight: bold;
   letter-spacing: 0.15em;
 }
