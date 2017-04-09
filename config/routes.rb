@@ -24,4 +24,9 @@ Rails.application.routes.draw do
 
   get 'links/create', to: 'links#create'
   post 'links/create', to: 'links#create'
+
+  get 'setting', to: 'links#show'
+
+  get 'setting/update', to: 'links#update'
+  post 'setting/update', to: 'links#update'
 end

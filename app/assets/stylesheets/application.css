@@ -88,7 +88,7 @@ p.item-title {
   display: table;
 }
 .user-profile .status ul li {
-  width: 120px;
+  width: 200px;
   padding: 5px 0;
   border-right: 1px solid #ddd;
   display: table-cell;

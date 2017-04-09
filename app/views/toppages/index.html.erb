@@ -1,15 +1,49 @@
 <% content_for :cover do %>
-    <div class="cover">
-      <div class="cover-inner">
-        <div class="cover-contents">
-          <h1>さぁプログラマーの第一歩を踏み出そう</h1>
-          <%# unless logged_in? %>
-              <%#= link_to 'モノリストを始める', signup_path, class: 'btn btn-success btn-lg' %>
-          <%# end %>
-
+    <% unless logged_in? %>
+        <div class="cover">
+          <div class="cover-inner">
+            <div class="cover-contents">
+              <h1>さぁプログラマーの第一歩を踏み出そう</h1>
+              <h2>PRO LEARN とは?</h2>
+              <p>プログラマーを目指し始めた向けの無料のリンクサイトです。</p>
+              <p>Twitterアカウントで登録できます。</p>
+              <p>プログラミングを体験してみたいけど、お金はかけたくない・・・</p>
+              <p>プログラミングを始めようと思ったが何からすればよいかわからないという人は、ぜひお試しください!</p>
+              <%= link_to 'Twitterでログイン', 'auth/twitter', class: 'btn btn-success btn-lg' %>
+            </div>
+          </div>
         </div>
-      </div>
-    </div>
+    <% else %>
+        <div class="col-md-8 col-sm-6 col-xs-12 col-md-offset-3 col-sm-offset-3">
+          <h1>プログラミング学習の進め方</h1>
+          <h2>まずはPHPを学ぼう</h2>
+          <p>PHPとは、Web開発でよく使用されるプログラミング言語です。</p>
+          <p>PHPには3つの特徴があります。</p>
+          <ul>
+            <li>HTML(Webページを表示するための言語)のソースコードを生成する</li>
+            <li>データベースと連携する</li>
+            <li>クライアント(私たちが今使っているPCのこと)から送信された情報を受け取る</li>
+          </ul>
+        </div>
+        <div class="col-md-8 col-sm-6 col-xs-12 col-md-offset-3 col-sm-offset-3">
+          <h2>実際に体験してみよう</h2>
+          <p>説明を聞いても、実際に体験しないとわからないもの</p>
+          <p>上のprogateをクリックして、PHPの講座を受けてみましょう</p>
+          <p>progateは、プログラミング初心者のための学習サイトです。</p>
+          <p>難しい環境設定等は一切ナシ</p>
+          <p>楽しいイラストとポップなページで、すぐにプログラミングが始められます。</p>
+          <p>まずは「PHP I」を受講して見ましょう</p>
+        </div>
+        <div class="col-md-8 col-sm-6 col-xs-12 col-md-offset-3 col-sm-offset-3">
+          <h2>慣れてきたら、ドットインストールとcloud9を使って本格的に開発してみましょう</h2>
+          <h3>ドットインストール</h3>
+          <p>「PHP I」の受講も進みある程度プログラミングにも慣れてきましたか？</p>
+          <p>自信がついてきたら、ドットインストールで学習を進めてみましょう！</p>
+          <p>ただドットインスールは、環境構築は自分でやらなくてはなりません</p>
+          <p>そこで役立つのが、cloud9です。</p>
+          <h3>cloud9</h3>
+        </div>
+    <% end %>
 <% end %>
 
 <%#= render 'items/items', items: @items %>

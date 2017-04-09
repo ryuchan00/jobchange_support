@@ -23,3 +23,6 @@ module Monolist
     # -- all .rb files in that directory are automatically loaded.
   end
 end
+
+Monolist::Application.config.time_zone = 'Tokyo'
+Monolist::Application.config.i18n.default_locale = :ja
