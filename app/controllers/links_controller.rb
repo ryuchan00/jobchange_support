@@ -2,14 +2,13 @@ class LinksController < ApplicationController
   before_action :current_user_tw, only: [:github_new, :github, :cloud9_new, :cloud9, :show, :update]
 
   def create
-    # @link = Link.new(link_params)
     @link = current_user_tw.links.build(link_params)
 
     if @link.save
-      flash[:success] = 'ユーザを登録しました。'
+      flash[:success] = 'URLを登録しました。'
       redirect_to root_path
     else
-      flash.now[:danger] = 'ユーザの登録に失敗しました。'
+      flash.now[:danger] = 'URLの登録に失敗しました。'
       render :github_new
     end
   end
@@ -17,15 +16,14 @@ class LinksController < ApplicationController
   def destroy
   end
 
-  # def github_new
-  #   @link = Link.new
-  #   @link.provider = 'github'
-  # end
-
   def github
     @current_user.link(@current_user, 'github')
     if @current_user
-      redirect_to :action => "github_new"
+      @link = Link.new
+      @link.provider = 'github'
+    else
+      flash[:danger] = '不正なアクセスです。'
+      redirect_to root_path
     end
   end
 
@@ -37,7 +35,11 @@ class LinksController < ApplicationController
   def cloud9
     @current_user.link(@current_user, 'cloud9')
     if @current_user
-      redirect_to :action => "cloud9_new"
+      @link = Link.new
+      @link.provider = 'cloud9'
+    else
+      flash[:danger] = '不正なアクセスです。'
+      redirect_to root_path
     end
   end
 
@@ -47,8 +49,8 @@ class LinksController < ApplicationController
   end
 
   def update
-    @github = @current_user.link(@current_user, 'github')
-    @cloud9 = @current_user.link(@current_user, 'cloud9')
+    @github = Link.find_or_create_by(user_id: @current_user.id, provider: 'github')
+    @cloud9 = Link.find_or_create_by(user_id: @current_user.id, provider: 'cloud9')
     if @github.update(github_params) && @cloud9.update(cloud9_params)
       flash[:success] = '正常に更新されました'
     else

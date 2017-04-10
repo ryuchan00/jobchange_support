@@ -6,15 +6,13 @@ class User < ApplicationRecord
   #                   uniqueness: { case_sensitive: false }
   # has_secure_password
 
-  has_many :ownerships
-  has_many :items, through: :ownerships
-  has_many :wants
-  has_many :want_items, through: :wants, class_name: 'Item', source: :item
-  has_many :haves, class_name: "Have"
-  has_many :have_items, through: :haves, class_name: 'Item', source: :item
-  has_many :owns
-  has_many :own_items, through: :owns, class_name: 'Item', source: :item
-  has_many :links, class_name: "Link"
+  has_many :ownerships, dependent: :destroy
+  has_many :items, through: :ownerships, dependent: :destroy
+  has_many :wants, dependent: :destroy
+  has_many :want_items, through: :wants, class_name: 'Item', source: :item, dependent: :destroy
+  has_many :haves, class_name: "Have", dependent: :destroy
+  has_many :have_items, through: :haves, class_name: 'Item', source: :item, dependent: :destroy
+  has_many :links, class_name: "Link", dependent: :destroy
 
   def self.find_or_create_from_auth(auth)
     provider = auth[:provider]
@@ -40,12 +38,6 @@ class User < ApplicationRecord
     link = self.links.find_by(link_id: link.id)
     link.destroy if link
   end
-
-  # def link?(provider=null)
-  #   @user = current_user_tw
-  #   @link = @user.links_find_by(user_id: @user.id, provider: provider)
-  #   self.links.include?(@link)
-  # end
 
   def want(item)
     self.wants.find_or_create_by(item_id: item.id)
