@@ -17,10 +17,10 @@ class LinksController < ApplicationController
   def destroy
   end
 
-  def github_new
-    @link = Link.new
-    @link.provider = 'github'
-  end
+  # def github_new
+  #   @link = Link.new
+  #   @link.provider = 'github'
+  # end
 
   def github
     @current_user.link(@current_user, 'github')
@@ -29,10 +29,10 @@ class LinksController < ApplicationController
     end
   end
 
-  def cloud9_new
-    @link = Link.new
-    @link.provider = 'cloud9'
-  end
+  # def cloud9_new
+  #   @link = Link.new
+  #   @link.provider = 'cloud9'
+  # end
 
   def cloud9
     @current_user.link(@current_user, 'cloud9')

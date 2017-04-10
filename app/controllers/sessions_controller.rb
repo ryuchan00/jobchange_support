@@ -7,12 +7,6 @@ class SessionsController < ApplicationController
     # redirect_to @user
   end
 
-  def destroy_tw
-    reset_session
-    flash[:success] = 'ログアウトしました。'
-    redirect_to root_path
-  end
-
   def new
   end
 
