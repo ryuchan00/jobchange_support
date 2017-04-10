@@ -15,16 +15,15 @@
         <ul class="nav navbar-nav navbar-right">
           <% if logged_in? %>
               <li>
-                <% if link?('github') %>
-                    <%= link_to @link.link do %>
-                        <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
-                        github
-                    <% end %>
-                <% else %>
-                    <%= link_to github_path do %>
-                        <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
-                        github
-                    <% end %>
+                <%= link_to 'https://prog-8.com/languages/php' do %>
+                    <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
+                    Progate
+                <% end %>
+              </li>
+              <li>
+                <%= link_to 'http://dotinstall.com/lessons/basic_php_v2' do %>
+                    <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
+                    ドットインストール
                 <% end %>
               </li>
               <li>
@@ -41,15 +40,16 @@
                 <% end %>
               </li>
               <li>
-                <%= link_to 'http://dotinstall.com/lessons/basic_php_v2' do %>
-                    <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
-                    ドットインストール
-                <% end %>
-              </li>
-              <li>
-                <%= link_to 'https://prog-8.com/languages/php' do %>
-                    <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
-                    Progate
+                <% if link?('GitHub') %>
+                    <%= link_to @link.link do %>
+                        <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
+                        github
+                    <% end %>
+                <% else %>
+                    <%= link_to github_path do %>
+                        <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
+                        github
+                    <% end %>
                 <% end %>
               </li>
               <li>
