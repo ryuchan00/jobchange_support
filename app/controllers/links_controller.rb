@@ -9,7 +9,7 @@ class LinksController < ApplicationController
       redirect_to root_path
     else
       flash.now[:danger] = 'URLの登録に失敗しました。'
-      render :github_new
+      redirect_to :back
     end
   end
 
@@ -17,29 +17,25 @@ class LinksController < ApplicationController
   end
 
   def github
-    @current_user.link(@current_user, 'github')
-    if @current_user
-      @link = Link.new
-      @link.provider = 'github'
-    else
+    # @current_user.link(@current_user, 'github')
+    if @current_user.link(@current_user, 'github')
       flash[:danger] = '不正なアクセスです。'
       redirect_to root_path
+    else
+      @link = Link.new
+      @link.provider = 'github'
     end
   end
 
-  # def cloud9_new
-  #   @link = Link.new
-  #   @link.provider = 'cloud9'
-  # end
-
   def cloud9
-    @current_user.link(@current_user, 'cloud9')
-    if @current_user
-      @link = Link.new
-      @link.provider = 'cloud9'
-    else
+    # @current_user.link(@current_user, 'cloud9')
+    # if @current_user
+    if @current_user.link(@current_user, 'cloud9')
       flash[:danger] = '不正なアクセスです。'
       redirect_to root_path
+    else
+      @link = Link.new
+      @link.provider = 'cloud9'
     end
   end
 
@@ -51,7 +47,7 @@ class LinksController < ApplicationController
   def update
     @github = Link.find_or_create_by(user_id: @current_user.id, provider: 'github')
     @cloud9 = Link.find_or_create_by(user_id: @current_user.id, provider: 'cloud9')
-    if @github.update(github_params) && @cloud9.update(cloud9_params)
+    if @github.update(github_params) || @cloud9.update(cloud9_params)
       flash[:success] = '正常に更新されました'
     else
       flash[:danger] = '更新されませんでした'
