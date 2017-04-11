@@ -14,20 +14,20 @@
         <ul class="nav navbar-nav navbar-right">
           <% if logged_in? %>
               <li>
-                <%= link_to 'https://prog-8.com/languages/php' do %>
+                <%= link_to 'https://prog-8.com', :target => ["_blank"] do %>
                     <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
                     Progate
                 <% end %>
               </li>
               <li>
-                <%= link_to 'http://dotinstall.com/lessons/basic_php_v2' do %>
+                <%= link_to 'http://dotinstall.com', :target => ["_blank"] do %>
                     <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
                     ドットインストール
                 <% end %>
               </li>
               <li>
                 <% if link?('cloud9') %>
-                    <%= link_to @link.link do %>
+                    <%= link_to @link.link, :target => ["_blank"] do %>
                         <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
                         cloud9
                     <% end %>
@@ -40,7 +40,7 @@
               </li>
               <li>
                 <% if link?('github') %>
-                    <%= link_to @link.link do %>
+                    <%= link_to @link.link, :target => ["_blank"] do %>
                         <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
                         GitHub
                     <% end %>
@@ -52,13 +52,13 @@
                 <% end %>
               </li>
               <li>
-                <%= link_to 'https://paiza.jp' do %>
+                <%= link_to 'https://paiza.jp', :target => ["_blank"] do %>
                     <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
                     paiza
                 <% end %>
               </li>
               <li>
-                <%= link_to 'https://secure.php.net/manual/ja/index.php' do %>
+                <%= link_to 'https://secure.php.net/manual/ja/index.php', :target => ["_blank"] do %>
                     <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
                     PHPマニュアル
                 <% end %>
