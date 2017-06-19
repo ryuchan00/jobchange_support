@@ -10,6 +10,11 @@
               <p>プログラミングを体験してみたいけど、お金はかけたくない・・・</p>
               <p>プログラミングを始めようと思ったが何からすればよいかわからないという人は、ぜひお試しください!</p>
               <%= link_to 'Twitterでログイン', 'auth/twitter', class: 'btn btn-success btn-lg' %>
+              <div class="editer">
+                <h3>試しにプログラムを動かしてみよう！</h3>
+                <p><%= text_area_tag 'page[code]', @code %></p>
+                <%= link_to '実行', 'enter', class: 'btn btn-primary btn-lg' %>
+              </div>
             </div>
           </div>
         </div>
