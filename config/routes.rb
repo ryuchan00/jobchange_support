@@ -28,4 +28,6 @@ Rails.application.routes.draw do
 
   get 'setting/update', to: 'links#update'
   post 'setting/update', to: 'links#update'
+
+  get 'toppages/enter', to: 'toppages#enter'
 end
