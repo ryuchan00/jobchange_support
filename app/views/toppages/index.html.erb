@@ -10,24 +10,24 @@
               <p>プログラミングを体験してみたいけど、お金はかけたくない・・・</p>
               <p>プログラミングを始めようと思ったが何からすればよいかわからないという人は、ぜひお試しください!</p>
               <%= link_to 'Twitterでログイン', 'auth/twitter', class: 'btn btn-success btn-lg' %>
-              <div class="editer">
-                <%= form_for @code, url: {action: :enter} do |f| %>
-                    <p>
-                      <%= f.datetime_select :post_from, :use_month_numbers => true, :default => Time.now().beginning_of_month %>
-                      〜<br>
-                      <%= f.datetime_select :post_to, :use_month_numbers => true, :default => Time.now().end_of_month %>
-                    </p>
-                    <p>
-                      <%= f.submit '検索する' %>
-                    </p>
-                <% end %>
-                <h3>試しにプログラムを動かしてみよう！</h3>
-                <%= form_for @code, url: {action: :enter} do |f| %>
-                <%= f. :post_from, :use_month_numbers => true, :default => Time.now().beginning_of_month %>
-                <p><%= text_ 'code_form', @code.code %></p>
-                <%= link_to '実行', 'toppages/enter', class: 'btn btn-primary btn-lg' %>
-                <% end %>
-              </div>
+              <!--<div class="editer">-->
+                <!--<%#= form_for @code, url: {action: :enter} do |f| %>-->
+                    <!--<p>-->
+                      <!--<%#= f.datetime_select :post_from, :use_month_numbers => true, :default => Time.now().beginning_of_month %>-->
+                      <!--〜<br>-->
+                      <!--<%#= f.datetime_select :post_to, :use_month_numbers => true, :default => Time.now().end_of_month %>-->
+                    <!--</p>-->
+                    <!--<p>-->
+                      <!--<%#= f.submit '検索する' %>-->
+                    <!--</p>-->
+                <%# end %>
+                <!--<h3>試しにプログラムを動かしてみよう！</h3>-->
+                <%#= form_for @code, url: {action: :enter} do |f| %>
+                <%#= f. :post_from, :use_month_numbers => true, :default => Time.now().beginning_of_month %>
+                <!--<p><%#= text_ 'code_form', @code.code %></p>-->
+                <%#= link_to '実行', 'toppages/enter', class: 'btn btn-primary btn-lg' %>
+                <%# end %>
+              <!--</div>-->
             </div>
           </div>
         </div>
