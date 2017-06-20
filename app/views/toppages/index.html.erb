@@ -22,8 +22,11 @@
                     </p>
                 <% end %>
                 <h3>試しにプログラムを動かしてみよう！</h3>
-                <p><%= text_area_tag 'code_form', @code.code %></p>
+                <%= form_for @code, url: {action: :enter} do |f| %>
+                <%= f. :post_from, :use_month_numbers => true, :default => Time.now().beginning_of_month %>
+                <p><%= text_ 'code_form', @code.code %></p>
                 <%= link_to '実行', 'toppages/enter', class: 'btn btn-primary btn-lg' %>
+                <% end %>
               </div>
             </div>
           </div>
