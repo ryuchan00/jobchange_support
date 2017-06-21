@@ -23,18 +23,18 @@ EOS
                               })
     puts res.body
     # query = {source_code: code, language: "php", longpoll: "true", api_key: "guest"}.to_query
-    query = {
-        source_code: code,
-        language: "php",
-        longpoll: "true",
-        api_key: "guest"
-    }.to_query
-    p code
-    p query
-    res = http.post(
-        '/runners/create',
-        query
-    )
+    # query = {
+    #     source_code: code,
+    #     language: "php",
+    #     longpoll: "true",
+    #     api_key: "guest"
+    # }.to_query
+    # p code
+    # p query
+    # res = http.post(
+    #     '/runners/create',
+    #     query
+    # )
     if res.code != '200'
       #todo:リターンコードを返す処理を入れる
       p "return false"
@@ -44,10 +44,11 @@ EOS
     id = json['id']
 
     query = {id: id, api_key: "guest"}.to_query
-    res = http.get(
-        '/runners/get_details',
-        query
-    )
+    url = URI.parse('http://api.paiza.io:80')
+    res = Net::HTTP.start(url.host, url.port) {|http|
+      http.get("/runners/get_details?#{query}")
+    }
+    puts res.body
     if res.code != '200'
       #todo:リターンコードを返す処理を入れる
       # exit()
