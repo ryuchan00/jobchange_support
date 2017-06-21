@@ -13,6 +13,7 @@ EOS
     @code = CodeForm.new
     code = params[:code_form][:code]
 
+    #こっちでいく
     http = setup_http
     res = Net::HTTP.post_form(URI.parse('http://api.paiza.io:80/runners/create'),
                               {'source_code' => code,
