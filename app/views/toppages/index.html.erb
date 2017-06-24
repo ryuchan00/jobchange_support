@@ -12,13 +12,14 @@
               <%= link_to 'Twitterでログイン', 'auth/twitter', class: 'btn btn-success btn-lg' %>
               <div class="editer">
                 <h3>試しにプログラムを動かしてみよう！</h3>
-                <%= form_for @code, url: {action: :enter} do |f| %>
+                <%= form_for @code, url: {action: :enter}, remote: true do |f| %>
                     <p><%= f.text_area :code %></p>
                     <p>
                       <%= f.submit '実行', class: 'btn btn-primary btn-lg' %>
                     </p>
                 <% end %>
               </div>
+              <div id="output"></div>
             </div>
           </div>
         </div>
