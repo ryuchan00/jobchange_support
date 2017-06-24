@@ -1,2 +1,14 @@
-var output = '<%= @output %>'
-$("#output").html(output);
+var output = '<%= @output %>';
+<% p @output %>
+console.log('<%= @output %>');
+console.log(output);
+//output = "PHP Parse error:  syntax error, unexpected end of file, expecting ',' or ';' in /workspace/Main.php on line 3\n";
+//output = selectorEscape(output);
+//var elm = document.getElementById('output');
+$("#output2").html(output);
+//elm.value = @output;
+$('#output').val(output);
+
+function selectorEscape(val) {
+    return val.replace(/[ !"#$%&'()*+,.\/:;<=>?@\[\\\]^`{|}~]/g, '\\$&');
+}
