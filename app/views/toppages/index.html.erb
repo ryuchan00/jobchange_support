@@ -13,14 +13,22 @@
               <div class="editer">
                 <h3>試しにプログラムを動かしてみよう！</h3>
                 <%= form_for @code, url: {action: :enter}, remote: true do |f| %>
-                    <p><%= f.text_area :code %></p>
+                    <table>
+                      <tr>
+                        <th><%= f.label :code, '入力コード' %></th>
+                        <th>出力文字</th>
+                      </tr>
+                      <tr>
+                        <td><%= f.text_area :code, :size => "50x5" %></td>
+                        <td><textarea id="output" name="output" cols="50" rows="5">ここにプログラムの結果が出力されます</textarea></td>
+                      </tr>
+                    </table>
                     <p>
                       <%= f.submit '実行', class: 'btn btn-primary btn-lg' %>
                     </p>
                 <% end %>
-                <textarea id="output" name="output">あいうえお</textarea>
               </div>
-              <div id="output2"></div>
+              <!--<div id="output2"></div>-->
             </div>
           </div>
         </div>
