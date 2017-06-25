@@ -5,105 +5,106 @@
             <div class="cover-contents">
               <h1>さぁプログラマーの第一歩を踏み出そう</h1>
               <h2>PRO LEARN とは?</h2>
-              <p>プログラマーを目指し始めた向けの無料のリンクサイトです。</p>
-              <p>Twitterアカウントで登録できます。</p>
+              <p>プログラマーを目指し始めた向けのリンクサイトです。</p>
               <p>プログラミングを体験してみたいけど、お金はかけたくない・・・</p>
               <p>プログラミングを始めようと思ったが何からすればよいかわからないという人は、ぜひお試しください!</p>
+              <p>Twitterアカウントでログインすることで、clodu9とGitHubのアカウントを上のリンク集に追加することができます。</p>
               <%= link_to 'Twitterでログイン', 'auth/twitter', class: 'btn btn-success btn-lg' %>
-              <!--<div class="editer">-->
-                <!--<%#= form_for @code, url: {action: :enter} do |f| %>-->
-                    <!--<p>-->
-                      <!--<%#= f.datetime_select :post_from, :use_month_numbers => true, :default => Time.now().beginning_of_month %>-->
-                      <!--〜<br>-->
-                      <!--<%#= f.datetime_select :post_to, :use_month_numbers => true, :default => Time.now().end_of_month %>-->
-                    <!--</p>-->
-                    <!--<p>-->
-                      <!--<%#= f.submit '検索する' %>-->
-                    <!--</p>-->
-                <%# end %>
-                <!--<h3>試しにプログラムを動かしてみよう！</h3>-->
-                <%#= form_for @code, url: {action: :enter} do |f| %>
-                <%#= f. :post_from, :use_month_numbers => true, :default => Time.now().beginning_of_month %>
-                <!--<p><%#= text_ 'code_form', @code.code %></p>-->
-                <%#= link_to '実行', 'toppages/enter', class: 'btn btn-primary btn-lg' %>
-                <%# end %>
-              <!--</div>-->
+              <div class="editer">
+                <h3>試しにプログラムを動かしてみよう！</h3>
+                <%= form_for @code, url: {action: :enter}, remote: true do |f| %>
+                    <table>
+                      <tr>
+                        <th><%= f.label :code, '入力コード' %></th>
+                        <th>出力文字</th>
+                      </tr>
+                      <tr>
+                        <td><%= f.text_area :code, :size => "50x5" %></td>
+                        <td><textarea id="output" name="output" cols="50" rows="5">ここにプログラムの結果が出力されます</textarea></td>
+                      </tr>
+                    </table>
+                    <p>
+                      <%= f.submit '実行', class: 'btn btn-primary btn-lg' %>
+                    </p>
+                <% end %>
+              </div>
+              <!--<div id="output2"></div>-->
             </div>
           </div>
         </div>
     <% else %>
-        <div class="container">
-          <div class="col-md-9 col-sm-6 col-xs-12 col-md-offset-2 col-sm-offset-3">
-            <h1>プログラミング学習の進め方</h1>
-            <h2>まずはPHPを学ぼう</h2>
-            <p>PHPとは、Web開発でよく使用されるプログラミング言語です。</p>
-            <p>PHPには3つの特徴があります。</p>
-            <ul>
-              <li>HTML(Webページを表示するための言語)のソースコードを生成する</li>
-              <li>データベースと連携する</li>
-              <li>クライアント(私たちが今使っているPCのこと)から送信された情報を受け取る</li>
-            </ul>
-          </div>
-          <div class="col-md-9 col-sm-6 col-xs-12 col-md-offset-2 col-sm-offset-3">
-            <h2>実際に体験してみよう</h2>
-            <p>説明を聞いても、実際に体験しないとわからないもの</p>
-            <p>早速PHPの講座を受けてみましょう</p>
-            <p><a href="https://prog-8.com/languages/php" target="_blank">Progate：PHP</a></p>
-            <p>Progateは、プログラミング初心者のための学習サイトです。</p>
-            <p>難しい環境設定等は一切ナシ</p>
-            <p>楽しいイラストとポップなページで、すぐにプログラミングが始められます。</p>
-            <p>まずは「PHP I」を受講して見ましょう</p>
-          </div>
-          <div class="col-md-9 col-sm-6 col-xs-12 col-md-offset-2 col-sm-offset-3">
-            <h2>慣れてきたら、ドットインストールとcloud9を使って本格的に開発してみましょう</h2>
-            <h3>ドットインストール</h3>
-            <p>「PHP I」の受講も進みある程度プログラミングにも慣れてきましたか？</p>
-            <p>自信がついてきたら、ドットインストールで学習を進めてみましょう！</p>
-            <p><a href="http://dotinstall.com/lessons/basic_php_v2" target="_blank">ドットインストール：PHP入門 (全30回)</a></p>
-            <p>ただドットインスールは、環境構築は自分でやらなくてはならないので、中級者向けです。</p>
-            <p>そこで役立つのが、cloud9です。</p>
-            <h3>cloud9</h3>
-            <p>cloud9は、オンライン上で操作できる統合開発環境(IDE)です。</p>
-            <p>会員登録をするだけで、無料で使うことができます。</p>
-            <p><a href="https://c9.io" target="_blank" target="_blank">cloud9</a></p>
-            <p>登録方法はこのページを参考にしてください。Railsを例にあげてますが、ここで必要なのは登録方法のみなのでPHPでも問題ありません。</p>
-            <p>登録が完了したら、上の「cloud9」を選択して、cloud9のリンクを登録しましょう。</p>
-            <p>そうすれば、上のリンクからclodu9に飛ぶことができます。</p>
-            <p><a href="http://www.sejuku.net/blog/385" target="_blank">cloud9の使い方</a></p>
-            <p>ドットインストールにもcloud9の使い方の講座があります。</p>
-            <p><a href="http://dotinstall.com/lessons/basic_c9/37006" target="_blank">#06 PHP､Ruby､Pythonの学習をしよう</a></p>
-            <p>cloud9上でPHPを実行するためには、コマンドラインの使用使用方法も知っておかなくてはなりません。</p>
-            <p>Progateに講座があるので、こちらも合わせて学習しましょう。</p>
-            <p><a href="https://prog-8.com/languages/commandline" target="_blank">Progate：Command Line</a></p>
-          </div>
-          <div class="col-md-9 col-sm-6 col-xs-12 col-md-offset-2 col-sm-offset-3">
-            <h2>ソースコードを公開しよう</h2>
-            <p>ここまで多くのソースコードを書いてきたと思います。</p>
-            <p>それを実際に公開して、自分の成果物を知ってもらいましょう。</p>
-            <p>ソースコードをgitを使って、Web上で公開できるGitHubというサービスがあります。</p>
-            <p>
-              <a href="http://www.backlog.jp/git-guide" target="_blank">サルでもわかるGit入門</a>
-            </p>
-            <p>
-              <a href="https://techacademy.jp/magazine/6235" target="_blank">今さら聞けない！GitHubの使い方【超初心者向け】</a>
-            <p>GitHubへの登録が完了したら、上の「GitHub」を選択して、GitHubのリンクを登録しましょう。</p>
-
-          </div>
-          <div class="col-md-9 col-sm-6 col-xs-12 col-md-offset-2 col-sm-offset-3">
-            <h2>自信がついたら、コーディングで腕試し</h2>
-            <p>ここまでプログラミングを続けてきたら、自分が一体どのくらいのレベルか試してみたくなりませんか？</p>
-            <p>そういう人のために、プログラミングを使った転職サイトのpaizaというサービスがあります。</p>
-            <p>
-              <a href="https://paiza.jp" target="_blank">paiza</a>
-            </p>
-            <p>paizaには、プログラミング講座もあるので、復習にPHPも学習しましょう</p>
-            <p>
-              <a href="https://paiza.jp/works/php/primer" target="_blank">PHP入門編 (全5レッスン)
-              </a>
-            </p>
-          </div>
-        </div>
     <% end %>
+    <div class="container">
+      <div class="col-md-9 col-sm-6 col-xs-12 col-md-offset-2 col-sm-offset-3">
+        <h1>プログラミング学習の進め方</h1>
+        <h2>まずはPHPを学ぼう</h2>
+        <p>PHPとは、Web開発でよく使用されるプログラミング言語です。</p>
+        <p>PHPには3つの特徴があります。</p>
+        <ul>
+          <li>HTML(Webページを表示するための言語)のソースコードを生成する</li>
+          <li>データベースと連携する</li>
+          <li>クライアント(私たちが今使っているPCのこと)から送信された情報を受け取る</li>
+        </ul>
+      </div>
+      <div class="col-md-9 col-sm-6 col-xs-12 col-md-offset-2 col-sm-offset-3">
+        <h2>実際に体験してみよう</h2>
+        <p>説明を聞いても、実際に体験しないとわからないもの</p>
+        <p>早速PHPの講座を受けてみましょう</p>
+        <p><a href="https://prog-8.com/languages/php" target="_blank">Progate：PHP</a></p>
+        <p>Progateは、プログラミング初心者のための学習サイトです。</p>
+        <p>難しい環境設定等は一切ナシ</p>
+        <p>楽しいイラストとポップなページで、すぐにプログラミングが始められます。</p>
+        <p>まずは「PHP I」を受講して見ましょう</p>
+      </div>
+      <div class="col-md-9 col-sm-6 col-xs-12 col-md-offset-2 col-sm-offset-3">
+        <h2>慣れてきたら、ドットインストールとcloud9を使って本格的に開発してみましょう</h2>
+        <h3>ドットインストール</h3>
+        <p>「PHP I」の受講も進みある程度プログラミングにも慣れてきましたか？</p>
+        <p>自信がついてきたら、ドットインストールで学習を進めてみましょう！</p>
+        <p><a href="http://dotinstall.com/lessons/basic_php_v2" target="_blank">ドットインストール：PHP入門 (全30回)</a></p>
+        <p>ただドットインスールは、環境構築は自分でやらなくてはならないので、中級者向けです。</p>
+        <p>そこで役立つのが、cloud9です。</p>
+        <h3>cloud9</h3>
+        <p>cloud9は、オンライン上で操作できる統合開発環境(IDE)です。</p>
+        <p>会員登録をするだけで、無料で使うことができます。</p>
+        <p><a href="https://c9.io" target="_blank" target="_blank">cloud9</a></p>
+        <p>登録方法はこのページを参考にしてください。Railsを例にあげてますが、ここで必要なのは登録方法のみなのでPHPでも問題ありません。</p>
+        <p>登録が完了したら、上の「cloud9」を選択して、cloud9のリンクを登録しましょう。</p>
+        <p>そうすれば、上のリンクからclodu9に飛ぶことができます。</p>
+        <p><a href="http://www.sejuku.net/blog/385" target="_blank">cloud9の使い方</a></p>
+        <p>ドットインストールにもcloud9の使い方の講座があります。</p>
+        <p><a href="http://dotinstall.com/lessons/basic_c9/37006" target="_blank">#06 PHP､Ruby､Pythonの学習をしよう</a></p>
+        <p>cloud9上でPHPを実行するためには、コマンドラインの使用使用方法も知っておかなくてはなりません。</p>
+        <p>Progateに講座があるので、こちらも合わせて学習しましょう。</p>
+        <p><a href="https://prog-8.com/languages/commandline" target="_blank">Progate：Command Line</a></p>
+      </div>
+      <div class="col-md-9 col-sm-6 col-xs-12 col-md-offset-2 col-sm-offset-3">
+        <h2>ソースコードを公開しよう</h2>
+        <p>ここまで多くのソースコードを書いてきたと思います。</p>
+        <p>それを実際に公開して、自分の成果物を知ってもらいましょう。</p>
+        <p>ソースコードをgitを使って、Web上で公開できるGitHubというサービスがあります。</p>
+        <p>
+          <a href="http://www.backlog.jp/git-guide" target="_blank">サルでもわかるGit入門</a>
+        </p>
+        <p>
+          <a href="https://techacademy.jp/magazine/6235" target="_blank">今さら聞けない！GitHubの使い方【超初心者向け】</a>
+        <p>GitHubへの登録が完了したら、上の「GitHub」を選択して、GitHubのリンクを登録しましょう。</p>
+
+      </div>
+      <div class="col-md-9 col-sm-6 col-xs-12 col-md-offset-2 col-sm-offset-3">
+        <h2>自信がついたら、コーディングで腕試し</h2>
+        <p>ここまでプログラミングを続けてきたら、自分が一体どのくらいのレベルか試してみたくなりませんか？</p>
+        <p>そういう人のために、プログラミングを使った転職サイトのpaizaというサービスがあります。</p>
+        <p>
+          <a href="https://paiza.jp" target="_blank">paiza</a>
+        </p>
+        <p>paizaには、プログラミング講座もあるので、復習にPHPも学習しましょう</p>
+        <p>
+          <a href="https://paiza.jp/works/php/primer" target="_blank">PHP入門編 (全5レッスン)
+          </a>
+        </p>
+      </div>
+    </div>
 <% end %>
 
 <%#= render 'items/items', items: @items %>

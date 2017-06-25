@@ -12,19 +12,32 @@
       </div>
       <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
         <ul class="nav navbar-nav navbar-right">
+          <li>
+            <%= link_to 'https://prog-8.com', :target => ["_blank"] do %>
+                <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
+                Progate
+            <% end %>
+          </li>
+          <li>
+            <%= link_to 'http://dotinstall.com', :target => ["_blank"] do %>
+                <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
+                ドットインストール
+            <% end %>
+          </li>
+          <li>
+            <%= link_to 'https://paiza.jp', :target => ["_blank"] do %>
+                <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
+                paiza
+            <% end %>
+          </li>
+          <li>
+            <%= link_to 'https://secure.php.net/manual/ja/index.php', :target => ["_blank"] do %>
+                <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
+                PHPマニュアル
+            <% end %>
+          </li>
           <% if logged_in? %>
-              <li>
-                <%= link_to 'https://prog-8.com', :target => ["_blank"] do %>
-                    <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
-                    Progate
-                <% end %>
-              </li>
-              <li>
-                <%= link_to 'http://dotinstall.com', :target => ["_blank"] do %>
-                    <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
-                    ドットインストール
-                <% end %>
-              </li>
+
               <li>
                 <% if link?('cloud9') %>
                     <%= link_to @link.link, :target => ["_blank"] do %>
@@ -49,18 +62,6 @@
                         <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
                         GitHub
                     <% end %>
-                <% end %>
-              </li>
-              <li>
-                <%= link_to 'https://paiza.jp', :target => ["_blank"] do %>
-                    <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
-                    paiza
-                <% end %>
-              </li>
-              <li>
-                <%= link_to 'https://secure.php.net/manual/ja/index.php', :target => ["_blank"] do %>
-                    <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
-                    PHPマニュアル
                 <% end %>
               </li>
               <li class="dropdown">
