@@ -42,11 +42,12 @@ EOS
     end
     json = JSON.parse(res.body)
     if json['stdout'].empty? then
-      @output = json['stderr'].to_s
+      @output = json['stderr']
       @output.slice!(@output.size - 1, 2)
     else
-      @output = json['stdout'].to_s
+      @output = json['stdout']
     end
+    p @output
   end
 
   private
